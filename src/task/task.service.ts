@@ -1,71 +1,44 @@
+import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { Task } from './task.model';
-import { CreateTask } from './task.interface';
+import { InjectModel } from '@nestjs/mongoose';
+import { CreateTaskDto, Task } from './interfaces/task.interface';
 
 @Injectable()
 export class TaskService {
-  private readonly tasks: Task[] = [
-    {
-      userId: '1',
-      _id: '2',
-      title: 'quis ut nam facilis et officia qui',
-      completed: false,
-    },
-    {
-      userId: '1',
-      _id: '3',
-      title: 'fugiat veniam minus',
-      completed: false,
-    },
-    {
-      userId: '1',
-      _id: '4',
-      title: 'et porro tempora',
-      completed: true,
-    },
-    {
-      userId: '1',
-      _id: '5',
-      title: 'laboriosam mollitia et enim quasi adipisci quia provident illum',
-      completed: false,
-    },
-    {
-      userId: '1',
-      _id: '6',
-      title: 'qui ullam ratione quibusdam voluptatem quia omnis',
-      completed: false,
-    },
-    {
-      userId: '1',
-      _id: '7',
-      title: 'illo expedita consequatur quia in',
-      completed: false,
-    },
-    {
-      userId: '1',
-      _id: '8',
-      title: 'quo adipisci enim quam ut ab',
-      completed: true,
-    },
-  ];
+  constructor(@InjectModel('Task') private readonly taskModel: Model<Task>) {}
 
-  createTask(task: CreateTask): Task[] {
-    this.tasks.push({ _id: '8', ...task });
-    return this.tasks;
+  // Create task list using model save
+  async createTask(createCatDto: CreateTaskDto): Promise<Task> {
+    const createdTask = new this.taskModel(createCatDto);
+    return await createdTask.save();
   }
 
-  getTasks(): Task[] {
-    return [...this.tasks];
+  // Get task list from database
+  async findAll(): Promise<Task[]> {
+    return await this.taskModel.find();
   }
 
-  getTask(taskId): Task {
-    const task = this.tasks.find(task => task._id === taskId);
-    return task;
+  // Get task item from database
+  async getTask(taskId): Promise<Task> {
+    return await this.taskModel.findOne({ _id: taskId });
   }
 
-  deleteTask(taskId): Task {
-    const task = this.tasks.findIndex(task => task._id === taskId);
-    this.tasks.splice(1, task);
-    return this.tasks[task];
+  // Update task item
+  async updateTask(taskId: string, task: CreateTaskDto): Promise<Task> {
+    const updateTask: any = {};
+    if (task.title) {
+      updateTask.title = task.title;
+    }
+    if (task.completed || !task.completed) {
+      updateTask.completed = task.completed;
+    }
+    return await this.taskModel.findByIdAndUpdate(taskId, updateTask, {
+      new: true,
+    });
+  }
+
+  // Remove task from database using findOneAndDelete method
+  async deleteTask(taskId): Promise<Task> {
+    return await this.taskModel.findOneAndDelete({ _id: taskId });
   }
 }

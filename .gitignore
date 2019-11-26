@@ -77,6 +77,8 @@ typings/
 
 # react / gatsby 
 public/
+build/
+dist/
 
 # vuepress build output
 .vuepress/dist
