@@ -11,9 +11,9 @@ import { TaskService } from './task.service';
 import {
   TaskResponse,
   TasksResponse,
-  CreateTaskDto,
   Task,
 } from './interfaces/task.interface';
+import { CreateTaskDto } from './interfaces/createTask.dto';
 
 @Controller('api/v1/tasks')
 export class TaskController {
@@ -52,7 +52,7 @@ export class TaskController {
   @Put(':taskId')
   async updateTask(
     @Param('taskId') taskId: string,
-    @Body() task: CreateTaskDto
+    @Body() task: CreateTaskDto,
   ): Promise<TaskResponse> {
     const updatedTask = await this.taskService.updateTask(taskId, task);
     return {

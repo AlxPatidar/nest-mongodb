@@ -8,5 +8,4 @@ import { userSchema } from './schema/user.schema';
   providers: [UsersService],
   exports: [UsersService],
 })
-
 export class UsersModule {}

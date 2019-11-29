@@ -4,12 +4,6 @@ export interface Task {
   readonly completed: boolean;
 }
 
-export interface CreateTaskDto {
-  readonly title: string;
-  readonly userId: string;
-  readonly completed: boolean;
-}
-
 export interface TasksResponse {
   success: boolean;
   message: string;

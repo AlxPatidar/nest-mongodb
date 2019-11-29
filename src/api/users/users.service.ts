@@ -7,7 +7,7 @@ export type User = any;
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel('User') private readonly userModel: Model<User>) { }
+  constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
   private readonly users: User[];
 
   // Find user details with email id

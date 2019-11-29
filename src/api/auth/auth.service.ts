@@ -3,21 +3,21 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import {
-  LoginRequest,
   LoginResponse,
-  RegistrationRequest,
   ResponseData,
-} from './interfaces/auth.interfaces';
+  LoginRequestDto,
+} from './interfaces/login.interfaces';
 import { User } from '../users/interfaces/user.interfaces';
+import { RegistrationRequestDto } from './interfaces/registration.interfaces';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
-    private readonly jwtService: JwtService,
+    private readonly jwtService: JwtService
   ) {}
   // Check email and password and return user details with token
-  async login(credential: LoginRequest): Promise<LoginResponse> {
+  async login(credential: LoginRequestDto): Promise<LoginResponse> {
     const user = await this.usersService.findOne(credential.email);
     if (user) {
       const passwordCheck = await Bcrypt.compare(
@@ -57,7 +57,7 @@ export class AuthService {
     }
   }
   // Register user with email id and basic information
-  async registration(payload: RegistrationRequest): Promise<ResponseData> {
+  async registration(payload: RegistrationRequestDto): Promise<ResponseData> {
     let user: User = await this.usersService.findOne(payload.email);
     if (!user) {
       user = await this.usersService.registerUser(payload);

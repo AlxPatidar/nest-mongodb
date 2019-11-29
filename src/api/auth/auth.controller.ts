@@ -10,17 +10,17 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import {
   LoginResponse,
-  LoginRequest,
-  RegistrationRequest,
+  LoginRequestDto,
   ResponseData,
-} from './interfaces/auth.interfaces';
+} from './interfaces/login.interfaces';
+import { RegistrationRequestDto } from './interfaces/registration.interfaces';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  async login(@Body() payload: LoginRequest): Promise<LoginResponse> {
+  async login(@Body() payload: LoginRequestDto): Promise<LoginResponse> {
     return this.authService.login(payload);
   }
 
@@ -32,7 +32,7 @@ export class AuthController {
 
   @Post('registration')
   async getProfile(
-    @Body() payload: RegistrationRequest
+    @Body() payload: RegistrationRequestDto
   ): Promise<ResponseData> {
     return this.authService.registration(payload);
   }
