@@ -1,75 +1,86 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Nestjs rest API
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+ > `nest-mongodb` uses Typescript, Node.js and MongoDB.
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Quick Start
 
+  The quickest way to get started with nest-mongodb server use [`github`](https://github.com/AlxPatidar/nest-mongodb.git) repository and clone as shown below:
+
+```bash
+# clone repository
+$ git clone https://github.com/AlxPatidar/nest-mongodb.git server
+# change directory to server folder
+$ cd server
+```
 ## Installation
-
+Install dependencies and devDependencies:
 ```bash
-$ npm install
+$ yarn install / npm install
+```
+## Configuration
+Configuration environment and change basic credentials:
+```bash
+$ cp .env.example .env
 ```
 
-## Running the app
+## Start Server
+
+Start the nest server:
+```bash
+$ yarn start / npm start
+```
+Start the nest development server:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ yarn start:dev / npm start:dev
 ```
+  View the welcome page at: http://localhost:4001
 
-## Test
-
+## Run Test
+  
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Basic configuration test
+$ yarn run test / yarn run test
 ```
 
-## Support
+## Features
+  * Language - TypeScript
+  * REST API
+  * Prettier
+  * Focus on high performance
+  * TsLint
+  * Circle CI
+  * Docker
+  * Validation - class-validator and class-transformer
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Useful npm/yarn commands
+
+  * `yarn build` - Transpile TypeScript code
+  * `yarn start` - Run application
+  * `yarn start:dev` - Run application in development mode
+  * `yarn run format` - Formate code with pritter
+  * `yarn run lint` - Run for typescript linting
+  * `yarn run test` - Run for test
+  * `yarn run test:watch` - Run for test with watch
+  
+  
+## Docs & Community
+
+  * [#Nest](https://nestjs.com/) for node js framework
+  * [#MongoDB](https://docs.mongodb.com/manual/) for Official Database management
+  * [#Jest](https://jestjs.io/) for Official testing tools
+  * [#Docker](https://www.docker.com/) for container management 
+  * [#Yarn](https://yarnpkg.com/lang/en/) for Official package manager
+  * [#CodeEditor](https://code.visualstudio.com/) Official text editor
+  * [#StackOverflow](https://stackoverflow.com) thanks for helping and provide solution on every problem 
+
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Ashok Patidar](https://github.com/AlxPatidar)
+- Stackoverflow - [Ashok](https://stackoverflow.com/users/10893484/ashok)
+- Github - [Alx Patidar](https://github.com/AlxPatidar)
 
 ## License
-
   Nest is [MIT licensed](LICENSE).
