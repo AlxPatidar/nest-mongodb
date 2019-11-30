@@ -76,7 +76,6 @@ typings/
 .nuxt
 
 # react / gatsby 
-public/
 build/
 dist/
 

@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  UseGuards,
+  UseInterceptors,
+  UploadedFile,
+  Render,
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { AppService } from './app.service';
 import { LoggerService } from '@Logger/logger.service';
 import { Logger } from '@Logger/logger.decorator';
@@ -10,9 +19,22 @@ export class AppController {
     @Logger('AppService') private logger: LoggerService
   ) {}
 
+  @Get('/404')
+  @Render('404')
+  root() {
+    return { message: '404 Page not found' };
+  }
+
   @Get()
-  getHello(): string {
-    this.logger.log('It is working now');
-    return this.appService.getHello();
+  @Render('index')
+  getHello() {
+    this.logger.log('Hello world is working');
+    return { message: 'Hello world!' };
+  }
+
+  @Post('file-upload')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file) {
+    this.logger.debug(`file object ${file}`);
   }
 }
