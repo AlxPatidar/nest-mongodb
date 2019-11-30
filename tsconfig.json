@@ -11,8 +11,7 @@
     "baseUrl": "./",
     "paths": {
       "@Logger/*": ["src/shared/Logger/*"],
-      "@Pipes/*": ["src/shared/pipes/*"],
-      "@api/*": ["src/api/*"]
+      "@Pipes/*": ["src/shared/pipes/*"]
     },
     "skipLibCheck": true,
     "incremental": true
@@ -23,8 +22,6 @@
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.spec.ts"
+    "dist"
   ]
 }

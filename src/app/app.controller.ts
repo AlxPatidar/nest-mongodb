@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AppService } from './app.service';
-import { LoggerService } from '@Logger/logger.service';
-import { Logger } from '@Logger/logger.decorator';
+import { Logger } from '../shared/Logger/logger.decorator';
+import { LoggerService } from '../shared/Logger/logger.service';
 
 @Controller()
 export class AppController {
@@ -29,12 +29,17 @@ export class AppController {
   @Render('index')
   getHello() {
     this.logger.log('Hello world is working');
-    return { message: 'Hello world!' };
+    return { message: this.appService.getHello() };
   }
 
   @Post('file-upload')
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(@UploadedFile() file) {
     this.logger.debug(`file object ${file}`);
+  }
+
+  @Get()
+  testMethod(): string {
+    return 'All test pass!';
   }
 }

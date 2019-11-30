@@ -3,7 +3,23 @@
   "rootDir": ".",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "tsconfig.json",
+      "enableTsDiagnostics": true
+    }
+  },
+  "moduleNameMapper": {
+    "@Logger/(.*)$": "<rootDir>/src/shared/Logger/$1",
+    "@Pipes/(.*)$": "<rootDir>/src/shared/pipes/$1"
+  },
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
-  }
+  },
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/node_modules/(?!@foo)"
+  ],
+  "transformIgnorePatterns": [
+    "<rootDir>/node_modules/(?!@foo)"
+  ]
 }
